@@ -1,6 +1,6 @@
 # Comparison-Optimization-func-Performance
 Finding performant implementations of functions to be optimized.  
-A Python notebook that explores different implementations of funcs that are to be optimized by a stochastic optimization algorithm.  
+A Python notebook that explores different implementations of funcs which are to be optimized by a stochastic optimization algorithm.  
 
 ## What is the problem?
 When handling large datasets, Data Analysts and Engineers often select Python and especially [**pandas**](https://pandas.pydata.org/) as go-to solution.  
@@ -9,6 +9,8 @@ When optimizing problems and writing solutions back in the `pd.DataFrame` in an 
 ## What to expect?
 This Jupyter Notebook investigates **three different implementations of an optimization function**, which needs to loop through the DataFrame.  
 The loops are necessary due to the iterative nature of the dynamic optimization probem: values that are calculated in the previous row are fed into the calculation of the next row.  
+**Disclaimer**: This code is far from perfect. It much more aims to demonstrate the capabilities of different algorithms with hindsight to their computational performance without giving up on Pythons advantage of intuitive programming.  
+Thus, I encourage readers to optimize the code by themselves and to adjust it to their needs where necessary. Or, just enjoy scrolling thorugh the files 😊.  
 
 **The three implementations are**:  
 1. An **"intuitive" approach** looping through the DataFrame and writing into each row separately.
@@ -28,7 +30,9 @@ I observed a huge performance difference: While on the sample set, the performan
 `numba` outplays the regular algorithm even further on the full data set (35000 samples): While the regular algorithm takes about 41 min to compute, the already jit-compiled numba function takes only 0.48 s (!).  
 ![grafik](https://user-images.githubusercontent.com/78816242/168422209-1775b161-2c82-466a-afcd-61bfd1b4af67.png)  
 One final remark: When omitting the `@njit` decorator of the function, still the naive Python computation with NumPy arrays took only 34.71 s on the complete dataset.  
-This indicates that the pandas package has pretty high access times.
+This indicates that the pandas package has pretty high access times.  
+![grafik](https://user-images.githubusercontent.com/78816242/168423645-5ff67c94-dc09-4c07-8db0-f8114d71a966.png)
+
 
 ## Lessons learned
 - Don't loop through DataFrames (especially writing on the df seems slow).
