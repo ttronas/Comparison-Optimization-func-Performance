@@ -1,4 +1,4 @@
-# Comparison-Optimization-func-Performance
+# Comparison of optimization function performances
 Finding performant implementations of functions to be optimized.  
 A Python notebook that explores different implementations of funcs which are to be optimized by a stochastic optimization algorithm.  
 
